@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1>Login</h1>
+
+            <div class="input-box">
+                <input type="email" placeholder="Email" required>
+                <i class='bx bxs-envelope'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="forgotpass.html">Forgot Password?</a>
+            </div>
+
+            <button class="btn" type="submit">Login</button>
+
+            <div class="register-link">
+                <p>Don't have an account? <br> <a href="signup.html">Register</a></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+        
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+        
+            if (!validatePassword(password)) {
+                alert('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit.');
+                return;
+            }
+        
+            alert('Validation passed, submitting the form.');
+            this.submit();
+        });
+        
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+        
+        function validatePassword(password) {
+            const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+            return passwordPattern.test(password);
+        }
+    </script>
+</body>
+</html>
